@@ -2,9 +2,9 @@ package com.springboot.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.springboot.entity.Customer;
+import com.springboot.entity.User;
 
 
-public interface UsersRepository extends JpaRepository<Customer, Integer>{
+public interface UsersRepository extends JpaRepository<User, Integer>{
 
 }

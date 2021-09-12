@@ -1,13 +1,14 @@
 package com.springboot.entity;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "user")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Customer implements java.io.Serializable {
+public class User implements java.io.Serializable {
 
 	/**
 	 * 
@@ -15,19 +16,27 @@ public class Customer implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 		@Id
     	@GeneratedValue(strategy = GenerationType.AUTO) 
-		@Column(name="id")
+		
 	    private Integer id;
-		@Column(name="name")
+		@NotBlank(message = "Name is mandatory")
 	    private String name;
-		@Column(name="email")
+		@Email(message = "Email is invalid")
+		@Column(unique = true)
+		@NotBlank(message = "Name is mandatory")
 		private String email;
-		@Column(name="bio")
+		@NotBlank(message = "Name is mandatory")
 		private String bio;
-		@Column(name="occupation")
+		@NotBlank(message = "Name is mandatory")
 	    private String occupation;
 	   
 	    
-	    public Customer(Integer id, String name, String email, String bio, String occupation) {
+	    public User() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+
+		public User(Integer id, String name, String email, String bio, String occupation) {
 			super();
 			this.id = id;
 			this.name = name;
